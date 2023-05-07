@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Canvas Arcs/Circles Example</title>
+	<style type="text/css">
+        /* canvas {
+            border: 1px solid black;
+        } */
+    </style>
+    
+	<body>
+        <canvas id="progressCanvas" width="600" height="300"> canvas</canvas>
+    <script>
+        var canvas = document.getElementById("progressCanvas");
+        var ctx = canvas.getContext("2d");
+        var x = canvas.width / 2;
+        var y = canvas.height / 2;
+        var radius = 80;
+        var lineWidth = 35;
+        var progress = 0.65; //  between 0 and 1
+        var startAngle = 0.9 * Math.PI;
+        var endAngle = (progress * Math.PI) + 1 * Math.PI;
+        var counterClockwise = false;
+
+        //  background circle
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 1.5 * Math.PI, 0.1 * Math.PI);
+        ctx.lineWidth = lineWidth;
+        ctx.strokeStyle = "gray";
+        ctx.stroke();
+
+        // progress circle
+        ctx.beginPath();
+        ctx.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+        ctx.lineWidth = lineWidth;
+        ctx.strokeStyle = "orange";
+        ctx.stroke();
+
+        //  progress text
+        ctx.font = "bold 30px Arial";
+        ctx.fillStyle = "black";
+        ctx.textAlign = "center";
+        ctx.fillText("%" + (progress * 100), x, y);
+        
+    </script>
+</body>
+</html>
